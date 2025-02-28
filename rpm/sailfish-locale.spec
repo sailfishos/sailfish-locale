@@ -7,7 +7,6 @@ URL:        https://github.com/sailfishos/sailfish-locale
 License:    BSD
 Source0:    %{name}-%{version}.tar.bz2
 Provides:   locale
-Conflicts:  jolla-settings-system <= 1.1.65
 BuildRequires:  glibc-common
 
 %description
@@ -27,10 +26,10 @@ mkdir -p  %{buildroot}%{_prefix}/lib/locale/
 localedef --replace -i en_US -f UTF-8 en_US.utf8 --prefix=%{buildroot}/
 find language/ -type f -name '*.conf' \
     |xargs grep -h Locale |cut -d=  -f2 |cut -d. -f1 \
+    |sort \
     |xargs -t -n1 -I@@ localedef --replace -i @@ -f UTF-8 @@.utf8 --prefix=%{buildroot}/
 
 %files
-%defattr(-,root,root,-)
 %license LICENSE.BSD
 %{_datadir}/jolla-supported-languages/
 %{_prefix}/lib/locale/locale-archive
