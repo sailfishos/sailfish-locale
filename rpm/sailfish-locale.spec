@@ -7,7 +7,7 @@ URL:        https://github.com/sailfishos/sailfish-locale
 License:    BSD
 Source0:    %{name}-%{version}.tar.bz2
 Provides:   locale
-BuildRequires:  glibc-common
+BuildRequires:  glibc-locale-source
 
 %description
 %{summary}.
